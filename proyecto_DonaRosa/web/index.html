@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .menu-item {
+            background: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .menu-item:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏪 Sistema de Gestión de Ventas</h1>
+        <p>Seleccione una opción del menú:</p>
+        
+        <div class="menu">
+            <a href="distrito" class="menu-item">
+                📍 Distritos
+            </a>
+            <a href="#" class="menu-item">
+                👥 Clientes
+            </a>
+            <a href="#" class="menu-item">
+                👨‍💼 Vendedores
+            </a>
+            <a href="#" class="menu-item">
+                📦 Productos
+            </a>
+            <a href="#" class="menu-item">
+                🧾 Facturas
+            </a>
+            <a href="#" class="menu-item">
+                📊 Auditoría
+            </a>
+        </div>
+    </div>
+</body>
+</html>
