@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 public class Conexion {
   
    private static Connection conexion = null;
-   private final String url = "jdbc:postgresql://localhost:5432/inventario";
+   private final String url = "jdbc:postgresql://localhost:5432/DonaRosa";
    private final String usuario = "postgres";
    private final String contraseña = "2003rodri"; 
    

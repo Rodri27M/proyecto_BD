@@ -10,6 +10,15 @@
     Distrito distrito = (Distrito) request.getAttribute("distrito");
     boolean esEdicion = (distrito != null);
 %>
+<!-- Mensajes de error -->
+<% 
+    String error = (String) request.getAttribute("error");
+    if (error != null) { 
+%>
+    <div style="background: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 20px; border-radius: 4px;">
+        ❌ <%= error %>
+    </div>
+<% } %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
