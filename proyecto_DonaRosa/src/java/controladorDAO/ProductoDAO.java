@@ -178,7 +178,7 @@ public class ProductoDAO {
         return false;
     }
     
-    // Método para actualizar stock después de venta
+    
     public boolean actualizarStock(String codPro, int cantidadVendida) throws SQLException {
         String sql = "UPDATE PRODUCTO SET SAC_PRO = SAC_PRO - ? WHERE COD_PRO = ? AND SAC_PRO >= ?";
         
