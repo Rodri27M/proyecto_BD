@@ -26,10 +26,7 @@ public class DetalleFacturaDAO {
             
         
             if (pstmt.executeUpdate() > 0) {
-                String datosNuevos = String.format("Factura: %s, Producto: %s, Cantidad: %d, Precio: %.2f", 
-                    detalle.getNumFac(), detalle.getCodPro(), detalle.getCanVen(), detalle.getPreVen());
-                auditoriaDAO.registrarAuditoria("DETALLE_FACTURA", detalle.getNumFac() + "_" + detalle.getCodPro(), 
-                    "INSERT", "Sistema", null, datosNuevos);
+               
                 insercion = true;
             }
             
@@ -123,10 +120,7 @@ public class DetalleFacturaDAO {
             
           
             if (pstmt.executeUpdate() > 0) {
-                String datosNuevos = String.format("Factura: %s, Producto: %s, Cantidad: %d, Precio: %.2f", 
-                    detalle.getNumFac(), detalle.getCodPro(), detalle.getCanVen(), detalle.getPreVen());
-                auditoriaDAO.registrarAuditoria("DETALLE_FACTURA", detalle.getNumFac() + "_" + detalle.getCodPro(), 
-                    "UPDATE", "Sistema", datosAnteriores, datosNuevos);
+       
                 insercion = true;
             }
             
@@ -159,8 +153,7 @@ public class DetalleFacturaDAO {
       
             
             if ( pstmt.executeUpdate() > 0) {
-                auditoriaDAO.registrarAuditoria("DETALLE_FACTURA", numFac + "_" + codPro, 
-                    "DELETE", "Sistema", datosAnteriores, null);
+              
                 insercion = true;
             }
             

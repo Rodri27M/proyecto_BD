@@ -33,10 +33,7 @@ public class ClienteDAO {
             pstmt.setString(9, cliente.getConCli());
 
             if (pstmt.executeUpdate() > 0) {
-                String datosNuevos = String.format("Código: %s, Razón Social: %s, RUC: %s",
-                        cliente.getCodCli(), cliente.getRsoCli(), cliente.getRucCli());
-                auditoriaDAO.registrarAuditoria("CLIENTE", cliente.getCodCli(),
-                        "INSERT", "Sistema", null, datosNuevos);
+            
                 insercion = true;
             }
 
@@ -125,10 +122,7 @@ public class ClienteDAO {
             pstmt.setString(9, cliente.getCodCli());
 
             if (pstmt.executeUpdate() > 0) {
-                String datosNuevos = String.format("Código: %s, Razón Social: %s, RUC: %s",
-                        cliente.getCodCli(), cliente.getRsoCli(), cliente.getRucCli());
-                auditoriaDAO.registrarAuditoria("CLIENTE", cliente.getCodCli(),
-                        "UPDATE", "Sistema", datosAnteriores, datosNuevos);
+           
                 insercion = true;
             }
 
@@ -155,8 +149,7 @@ public class ClienteDAO {
             pstmt.setString(1, codCli);
 
             if (pstmt.executeUpdate() > 0) {
-                auditoriaDAO.registrarAuditoria("CLIENTE", codCli,
-                        "DELETE", "Sistema", datosAnteriores, null);
+        
                 insercion = true;
             }
 

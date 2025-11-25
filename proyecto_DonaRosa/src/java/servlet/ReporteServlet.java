@@ -1,6 +1,6 @@
 package servlet;
 
-import controladorDAO.AuditoriaDAO;
+import controladorDAO.ReporteDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,23 +11,23 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import javax.swing.JOptionPane;
 
-@WebServlet(name = "AuditoriaServlet", urlPatterns = {"/auditoria"})
-public class AuditoriaServlet extends HttpServlet {
-    private AuditoriaDAO auditoriaDAO;
+@WebServlet(name = "ReporteServlet", urlPatterns = {"/reporte-vendedores"})
+public class ReporteServlet extends HttpServlet {
+    private ReporteDAO reporteDAO;
     
     @Override
     public void init() {
-        auditoriaDAO = new AuditoriaDAO();
+        reporteDAO = new ReporteDAO();
     }
     
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        List<Object[]> registrosAuditoria = auditoriaDAO.obtenerAuditoria();
-        request.setAttribute("registrosAuditoria", registrosAuditoria);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("auditoria-list.jsp");
+        List<Object[]> vendedores = reporteDAO.obtenerVendedoresMenoresVentas();
+        request.setAttribute("vendedores", vendedores);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("reporte-vendedores.jsp");
         dispatcher.forward(request, response);
     }
 }

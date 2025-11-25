@@ -103,7 +103,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="prePro">Precio <span class="required">*</span></label>
-                    <input type="number" id="prePro" name="prePro" 
+                   <input type="number" id="prePro" name="prePro" 
                            value="<%= esEdicion ? String.format("%.2f", producto.getPrePro()) : "" %>" 
                            required step="0.01" min="0" placeholder="Ej: 299.99">
                     <div class="help-text">Precio en soles</div>

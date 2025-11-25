@@ -34,10 +34,7 @@ public class VendedorDAO {
             pstmt.setString(7, vendedor.getCodDis());
 
             if (pstmt.executeUpdate() > 0) {
-                String datosNuevos = String.format("Código: %s, Nombre: %s %s, Sueldo: %.2f",
-                        vendedor.getCodVen(), vendedor.getNomVen(), vendedor.getApeVen(), vendedor.getSueVen());
-                auditoriaDAO.registrarAuditoria("VENDEDOR", vendedor.getCodVen(),
-                        "INSERT", "Sistema", null, datosNuevos);
+            
                 insercion = true;
             }
 
@@ -127,10 +124,7 @@ public class VendedorDAO {
             pstmt.setString(7, vendedor.getCodVen());
 
             if (pstmt.executeUpdate() > 0) {
-                String datosNuevos = String.format("Código: %s, Nombre: %s %s, Sueldo: %.2f",
-                        vendedor.getCodVen(), vendedor.getNomVen(), vendedor.getApeVen(), vendedor.getSueVen());
-                auditoriaDAO.registrarAuditoria("VENDEDOR", vendedor.getCodVen(),
-                        "UPDATE", "Sistema", datosAnteriores, datosNuevos);
+             
                 insercion = true;
             }
 
@@ -155,11 +149,10 @@ public class VendedorDAO {
                 PreparedStatement pstmt = conexion.getConnection().prepareStatement(sql)) {
 
             pstmt.setString(1, codVen);
-            boolean resultado = pstmt.executeUpdate() > 0;
+      
 
-            if (resultado) {
-                auditoriaDAO.registrarAuditoria("VENDEDOR", codVen,
-                        "DELETE", "Sistema", datosAnteriores, null);
+            if (pstmt.executeUpdate() > 0) {
+               insercion = true;
             }
 
         } catch (SQLException e) {
@@ -170,21 +163,21 @@ public class VendedorDAO {
     }
 
     public List<String[]> obtenerDistritos() {
- List<String[]> distritos = new ArrayList<>();
-    String sql = "SELECT COD_DIS, NOM_DIS FROM DISTRITO ORDER BY NOM_DIS";
-    
-    try (
-         PreparedStatement pstmt = conexion.getConnection().prepareStatement(sql);
-         ResultSet rs = pstmt.executeQuery()) {
-        
-        while (rs.next()) {
-            String codDis = rs.getString("COD_DIS");
-            String nomDis = rs.getString("NOM_DIS");
-            String[] distrito = {codDis, nomDis};
-            distritos.add(distrito);
+        List<String[]> distritos = new ArrayList<>();
+        String sql = "SELECT COD_DIS, NOM_DIS FROM DISTRITO ORDER BY NOM_DIS";
+
+        try (
+                PreparedStatement pstmt = conexion.getConnection().prepareStatement(sql); ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                String codDis = rs.getString("COD_DIS");
+                String nomDis = rs.getString("NOM_DIS");
+                String[] distrito = {codDis, nomDis};
+                distritos.add(distrito);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
-    }catch(SQLException e){
-        JOptionPane.showMessageDialog(null,"Error: " + e.getMessage());
+        return distritos;
     }
-    return distritos;    }
 }
